@@ -159,7 +159,13 @@ Paste it on a text file and save it.
 - ```ultra96FS.py```: The main program that runs on the Ultra96. Functionally identical to the one in ```model_wk13_5```, but with more documentation.
 
 ## Processes Overview
+
+</br>
+
 ![image](https://github.com/ChewyChair/cg4002extcomms/assets/69298017/ad957d0d-c08a-42fa-b491-a8814c4caa96)
+
+</br>
+
 The Python ```multiprocessing``` library is used to start 6-7 processes. (The ```EvalClient```  is not started in freeplay.) The processes are as follows:
 - ```RelayClient```, the client that will communicate via TCP with the relay nodes. There are two of these processes, one for each player. Each process will send messages from the gun and vests to the GunLogic process and send motion data to their respective ```Classification``` process.
 - ```Classification```, for which there are two processes, each of which will receive sensor data forwarded from its ```RelayClient```. When receiving sensor data, it writes it into a buffer. 
@@ -178,6 +184,7 @@ Finally, it will publish to *lasertag/vizgamestate* with the type update. The vi
 ## Design choices
 This program was written using multiprocessing and uses no polling, only blocking queues and timeouts to minimise CPU load.
 ```ultra96FS.py``` is pretty well documented, see it for more information.
+
 ---
 # AI
 
